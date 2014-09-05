@@ -1,0 +1,46 @@
+Starting program: /home/shay/a/bfrazie/ECE264/Solutions/PA01/pa01 
+
+Program exited normally.
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.132.el6_5.4.x86_64
+No symbol "argc" in current context.
+The program is not being run.
+The program is not being run.
+The program is not being run.
+Breakpoint 1 at 0x400790: file pa01.c, line 59.
+Starting program: /home/shay/a/bfrazie/ECE264/Solutions/PA01/pa01 
+
+Breakpoint 1, test_arrayCountNegative (array=0x7fffffffe3e0, len=4, expected=1) at pa01.c:61
+61	    printArray(array, len);
+No symbol "argc" in current context.
+62	    int count = arrayCountNegative(array,len); 
+63	    printf(". count = %d, expected = %d.", count, expected);
+Continuing.
+
+Breakpoint 1, test_arrayCountNegative (array=0x7fffffffe3e0, len=0, expected=0) at pa01.c:61
+61	    printArray(array, len);
+62	    int count = arrayCountNegative(array,len); 
+63	    printf(". count = %d, expected = %d.", count, expected);
+64	    if(count != expected)
+66	    printf("\n");
+67	}
+test_01_arrayCountNegative () at pa01.c:92
+92	    int len5 = 0;
+93	    test_arrayCountNegative(array5, len5, 0);
+Undefined command: "nn".  Try "help".
+
+Breakpoint 1, test_arrayCountNegative (array=0x7fffffffe3b0, len=0, expected=0) at pa01.c:61
+61	    printArray(array, len);
+62	    int count = arrayCountNegative(array,len); 
+63	    printf(". count = %d, expected = %d.", count, expected);
+64	    if(count != expected)
+66	    printf("\n");
+67	}
+test_01_arrayCountNegative () at pa01.c:95
+95	    printf("\n");
+96	}
+main (argc=1, argv=0x7fffffffe518) at pa01.c:109
+109	    return EXIT_SUCCESS;
+110	}
+Continuing.
+
+Program exited normally.
