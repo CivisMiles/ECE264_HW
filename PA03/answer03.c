@@ -20,7 +20,7 @@ char * strcat_ex(char * * dest, int * n, const char * src)
 	  if (rpt == 100)
 	  {
 	    printf("ERROR: out of memory for malloc");
-		//return EXIT_FAILURE;
+		//return (b);
 	  }
 	}
     strcpy(temp, *dest);
@@ -34,7 +34,7 @@ char * strcat_ex(char * * dest, int * n, const char * src)
 	  if (rpt == 100)
 	  {
 	    printf("ERROR: out of memory for malloc");
-		//return EXIT_FAILURE;
+		//return (b);
 	  }
     }
     strcpy(*dest, temp);
@@ -46,16 +46,78 @@ char * strcat_ex(char * * dest, int * n, const char * src)
   return EXIT_SUCCESS;
 }
 
-/*
+///*
 char * * explode(const char * str, const char * delims, int * arrLen)
 {
   //Local Declarations
-  
+  int lcv1;
+  int lcv2;
+  int lcv3 = 1;
+  int numarr = 1;
+  int numdelim;
+  int lenstr;
+  int delind;
   
   //Statements
+  lenstr = strlen(str);
+  numdelim = strlen(delims);
+  delind = malloc(sizeof(int) * (lenstr + 1));
+  while (delind == NULL)
+  {
+    delind = malloc(sizeof(char *) * (*n));
+    rpt++;
+    if (rpt == 100)
+	{
+	  printf("ERROR: out of memory for malloc");
+      return (b);
+	}
+  }
+  delind[0] = 0;
+  
+  for (lcv1 = 0;lcv1 <= lenstr;lcv1++)
+  {
+    for (lcv2 = 0;lcv2 <= numdelim;lcv2++)
+	{
+	  if (str[lcv] == delims(lcv2))
+  	  {
+	    delind[lcv3] = lcv1;
+		numarr++;
+		lcv3++;
+	  }
+	}
+  }
+  
+  if (numarr > 1)
+  {
+    strArr = malloc(sizeof(char *) * (numarr));
+	while (strArr == NULL)
+    {
+      strArr = malloc(sizeof(char *) * (*n));
+	  rpt++;
+	  if (rpt == 100)
+	  {
+	    printf("ERROR: out of memory for malloc");
+		return (b);
+	  }
+    }
+    
+	lcv1 = 0;
+	lcv2 = 0;
+	while (lcv1 < numarry)
+	{
+      char * str[lcv1] = malloc(sizeof(char * ) * (delind[lcv2 + 1] - delind[lcv2]));
+
+	  lcv1++;
+	  lcv2++;
+	}
+  }
+  else
+  {
+    
+  }
   
   
-  return EXIT_SUCCESS;
+  return * strArr;
 }
 
 
@@ -67,20 +129,21 @@ char * implode(char * * strArr, int len, const char * glue)
   //Statements
   
   
-  return EXIT_SUCCESS;
+  
+  return "b";// str;
 }
-
-
+//*/
+/*
 void sortStringArray(char * * arrString, int len)
 {
   //Local Declarations
 
   
   //Statements
-  if (str[0] == 0)
-  {
-    return;
-  }
+  //if (str[0] == 0)
+  //{
+  //  return;
+  //}
   
 
   return;
@@ -93,10 +156,10 @@ void sortStringCharacters(char * str)
   
   
   //Statements
-  if (str[0] == 0)
-  {
-    return;
-  }
+  //if (str[0] == 0)
+  //{
+  //  return;
+  //}
   
   return;
 }
