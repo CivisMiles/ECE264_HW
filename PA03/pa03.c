@@ -6,89 +6,180 @@
 
 int main()
 { 
-  //testing strcat_ex
-  printf("Testing strcat_ex\n");
   int test = 1;
 
-  char dest[5] = "Go\0";		const char * src= " Purdue\0";		 int n = 5;  
-  printf("Case %d:\tn = %d\tSolution: '%s%s'",test,n,dest,src);
-  /*strcat_ex(&dest, &src, &n);		printf("\tResults: n = %d '%s'",n,dest);
-  //free(dest);
-  //free(src);*/
+  //testing strcat_ex
+  printf("Testing strcat_ex\n");
+
+  int n = 3;
+  char * dest = malloc(sizeof(char *) * n);
+  strcpy(dest, "Go");
+  char * src = malloc(sizeof(char *) * 8);
+  strcpy(src, " Purdue");
+  printf("\nCase %d:\tn = %d\t*dest = %s\tsrc = %s\n",test,n,dest,src);
+  printf("Solution:\tn = 10\t'%s%s'\n",dest,src);
+  strcat_ex(&dest, &n, src);
+  printf("Results:\tn = %d\t'%s'\n",n,dest);
+  free(dest);
+  free(src);
   test++;
   
-  char dest1[3] = "Go\0";		const char * src1= " Boilermakers\0";		n = 3;
-  printf("\nCase %d:\tn = %d\tSolution: '%s%s'",test,n,dest1,src1);
-  /*strcat_ex(&dest, &src, &n);		printf("\tResults: n = %d '%s'",n,dest);
-  free(dest);		free(src);*/
+  n = 3;
+  dest = malloc(sizeof(char *) * n);
+  strcpy(dest, "Go");
+  src = malloc(sizeof(char *) * 14);
+  strcpy(src, " Boilermakers");
+  printf("\nCase %d:\tn = %d\t*dest = %s\tsrc = %s\n",test,n,dest,src);
+  printf("Solution:\tn = 16\t'%s%s'\n",dest,src);
+  strcat_ex(&dest, &n, src);
+  printf("Results:\tn = %d\t'%s'\n",n,dest);
+  free(dest);
+  free(src);
+  test++;
+   
+  n = 5;
+  dest = malloc(sizeof(char *) * n);
+  strcpy(dest, "Beat");
+  src = malloc(sizeof(char *) * 3);
+  strcpy(src, "IU");
+  printf("\nCase %d:\tn = %d\t*dest = %s\tsrc = %s\n",test,n,dest,src);
+  printf("Solution:\tn = 13\t'%s%s'\n",dest,src);
+  strcat_ex(&dest, &n, src);
+  printf("Results:\tn = %d\t'%s'\n",n,dest);
+  free(dest);
+  free(src);
   test++;
   
-  char dest2[13] = "Beat\0 Purdue";		const char * src2= " IU\0";		n = 13;
-  printf("\nCase %d:\tn = %d\tSolution: '%s%s'",test,n,dest2,src2);
-  //strcat_ex(&dest, &src, &n);		printf("\tResults: n = %d '%s'",n,dest);
+  n = 6;
+  dest = malloc(sizeof(char *) * n);
+  strcpy(dest, "Th");
+  src = malloc(sizeof(char *) * 18);
+  strcpy(src, "is homework sucks");
+  printf("\nCase %d:\tn = %d\t*dest = %s\tsrc = %s\n",test,n,dest,src);
+  printf("Solution:\tn = 20\t'%s%s'\n",dest,src);
+  strcat_ex(&dest, &n, src);
+  printf("Results:\tn = %d\t'%s'\n",n,dest);
+  free(dest);
+  free(src);
   test++;
-  
-  char dest3[6] = "Th\0is";		const char * src3= "is homework sucks";		n = 6;
-  printf("\nCase %d:\tn = %d\tSolution: '%s%s'",test,n,dest3,src3);
-  /*strcat_ex(&dest, &src, &n);		printf("\tResults: n = %d '%s'",n,dest);
-  free(dest);		free(src);*/
-  test++;
-  
+ 
+  printf("\nTesting of strcat_ex complete\n");
+
   /*
   //testing explode
+  test = 1;
+
   printf("\nTesting explode\n");
   
-  explode();		printf("");
+  printf("Case %d: Solution: ",test);
+  explode();
+  printf("");
   
-  explode();		printf("");
+  printf("Case %d: Solution: ",test);
+  explode();
+  printf("");
   
-  explode();		printf("");
+  printf("Case %d: Solution: ",test);
+  explode();
+  printf("");
   
-  explode();		printf("");
+  printf("Case %d: Solution: ",test);
+  explode();
+  printf("");
+  
+  printf("\nTesting of explode complete\n");
   
   //testing implode
+  test = 1;
+  
   printf("\nTesting implode\n");
   
-  implode();		printf("");
+  printf("Case %d: Solution: ",test);
+  implode();
+  printf("");
   
-  implode();		printf("");
+  printf("Case %d: Solution: ",test);
+  implode();
+  printf("");
   
-  implode();		printf("");
+  printf("Case %d: Solution: ",test);
+  implode();
+  printf("");
   
-  implode();		printf("");
+  printf("Case %d: Solution: ",test);
+  implode();
+  printf("");
   
+  printf("\nTesting of implode complete\n");
+
   //testing sortStringArray
+  test = 1;
+  
   printf("\nTesting sortStringArray\n");
   
-  sortStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringArray();
+  printf("");
   
-  sortStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringArray();
+  printf("");
   
-  sortStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringArray();
+  printf("");
   
-  sortStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringArray();
+  printf("");
   
+  printf("\nTesting of sortStringArray complete\n");
+
   //testing sortStringCharacters
+  test = 1;
+
   printf("\nTesting sortStringCharacters\n");
   
-  sortStringCharacters();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringCharacters();
+  printf("");
   
-  sortStringCharacters();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringCharacters();
+  printf("");
   
-  sortStringCharacters();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringCharacters();
+  printf("");
   
-  sortStringCharacters();		printf("");
+  printf("Case %d: Solution: ",test);
+  sortStringCharacters();
+  printf("");
+  
+  printf("\nTesting of sortStringCharacters complete\n");
   
   //testing destroyStringArray
+  test = 1;
+
   printf("\nTesting destroyStringArray\n\n");
   
-  destroyStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  destroyStringArray();
+  printf("");
   
-  destroyStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  destroyStringArray();
+  printf("");
   
-  destroyStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  destroyStringArray();
+  printf("");
   
-  destroyStringArray();		printf("");
+  printf("Case %d: Solution: ",test);
+  destroyStringArray();
+  printf("");
+  
+  printf("\nTesting of destroyStringArray complete\n");
   */
 
   return EXIT_SUCCESS;

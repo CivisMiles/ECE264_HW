@@ -3,34 +3,50 @@
 #include <string.h>
 #include "answer03.h"
 
-/*
+
 char * strcat_ex(char * * dest, int * n, const char * src)
 {
   //Local Declarations
   int rpt = 0;
 
   //Statements
-  if (n < strlen(dest) + strlen(src) + 1)
+  if (* n < (strlen(* dest) + strlen(src) + 1))
   {
-    n = strlen() + strlen() + 1;
-    * dest = (char *)malloc(sizeof(char *) * (*n));
-    while (* dest == 0)
+    char * temp = malloc(sizeof(char *) * (*n + 1));
+    while (temp == NULL)
     {
-      dest = (char *)malloc(sizeof(char *) * (*n));
+      temp = malloc(sizeof(char *) * (*n));
 	  rpt++;
 	  if (rpt == 100)
 	  {
-	    return EXIT_FAILURE;
+	    printf("ERROR: out of memory for malloc");
+		//return EXIT_FAILURE;
+	  }
+	}
+    strcpy(temp, *dest);
+
+	* n = strlen(* dest) + strlen(src) + 1;
+    * dest = malloc(sizeof(char *) * (*n));
+    while (* dest == NULL)
+    {
+      * dest = malloc(sizeof(char *) * (*n));
+	  rpt++;
+	  if (rpt == 100)
+	  {
+	    printf("ERROR: out of memory for malloc");
+		//return EXIT_FAILURE;
 	  }
     }
+    strcpy(*dest, temp);
+	free(temp);
   }
-
-  strcat(* dest, src);
   
+  strcat(* dest, src);
+    
   return EXIT_SUCCESS;
 }
 
-
+/*
 char * * explode(const char * str, const char * delims, int * arrLen)
 {
   //Local Declarations
