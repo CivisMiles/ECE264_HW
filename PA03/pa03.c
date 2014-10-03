@@ -16,7 +16,7 @@ int main()
   strcpy(dest, "Go");
   char * src = malloc(sizeof(char *) * 8);
   strcpy(src, " Purdue");
-  printf("\nCase %d:\tlen = %d\t*dest = %s\tsrc = %s\n",test,len,dest,src);
+  printf("\nCase %d:\nlen = %d\t\t*dest = %s\tsrc = %s\n",test,len,dest,src);
   printf("Solution:\tlen = 10\t'%s%s'\n",dest,src);
   strcat_ex(&dest, &len, src);
   printf("Results:\tlen = %d\t'%s'\n",len,dest);
@@ -29,7 +29,7 @@ int main()
   strcpy(dest, "Go");
   src = malloc(sizeof(char *) * 14);
   strcpy(src, " Boilermakers");
-  printf("\nCase %d:\tlen = %d\t*dest = %s\tsrc = %s\n",test,len,dest,src);
+  printf("\nCase %d:\nlen = %d\t\t*dest = %s\tsrc = %s\n",test,len,dest,src);
   printf("Solution:\tlen = 16\t'%s%s'\n",dest,src);
   strcat_ex(&dest, &len, src);
   printf("Results:\tlen = %d\t'%s'\n",len,dest);
@@ -42,10 +42,10 @@ int main()
   strcpy(dest, "Beat");
   src = malloc(sizeof(char *) * 3);
   strcpy(src, "IU");
-  printf("\nCase %d:\tlen = %d\t*dest = %s\tsrc = %s\n",test,len,dest,src);
+  printf("\nCase %d:\nlen = %d\t\t*dest = %s\tsrc = %s\n",test,len,dest,src);
   printf("Solution:\tlen = 13\t'%s%s'\n",dest,src);
   strcat_ex(&dest, &len, src);
-  printf("Results:\tlen = %d\t'%s'\n",len,dest);
+  printf("Results:\tlen = %d \t'%s'\n",len,dest);
   free(dest);
   free(src);
   test++;
@@ -55,7 +55,7 @@ int main()
   strcpy(dest, "Th");
   src = malloc(sizeof(char *) * 18);
   strcpy(src, "is homework sucks");
-  printf("\nCase %d:\tlen = %d\t*dest = %s\tsrc = %s\n",test,len,dest,src);
+  printf("\nCase %d:\nlen = %d\t\t*dest = %s\tsrc = %s\n",test,len,dest,src);
   printf("Solution:\tlen = 20\t'%s%s'\n",dest,src);
   strcat_ex(&dest, &len, src);
   printf("Results:\tlen = %d\t'%s'\n",len,dest);
@@ -65,18 +65,20 @@ int main()
  
   printf("\nTesting of strcat_ex complete\n");
 
-  /*
+  
   //testing explode & implode
   test = 1;
 
-  int len = ;
-  char str = ;
-  char glue = ;
+  int len = 0;
+  char str = "IDK WHAT\nI'M\tDOING!!;
+  //char glue = ;
+  int lcv = 0;
+  char delems = " \n\t\f\v";
   printf("\nTesting explode & implode\n");
   printf("Case %d:\tBefore explode: %s",test,str);
   char * * strArr = explode(str, delims, &len);
   printf("After explode/before implode: %s",*strArr);
-  str = implode(*strArr, len, glue);
+  /*str = implode(*strArr, len, glue);
   printf("After implode: %s",str);
   test++;
  

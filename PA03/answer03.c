@@ -15,7 +15,8 @@ char * strcat_ex(char * * dest, int * n, const char * src)
     char * temp = malloc(sizeof(char *) * (*n + 1));
     while (temp == NULL)
     {
-      temp = malloc(sizeof(char *) * (*n));
+      free(temp);
+	  temp = malloc(sizeof(char *) * (*n));
 	  rpt++;
 	  if (rpt == 100)
 	  {
@@ -29,7 +30,8 @@ char * strcat_ex(char * * dest, int * n, const char * src)
     * dest = malloc(sizeof(char *) * (*n));
     while (* dest == NULL)
     {
-      * dest = malloc(sizeof(char *) * (*n));
+      free(* dest);
+	  * dest = malloc(sizeof(char *) * (*n));
 	  rpt++;
 	  if (rpt == 100)
 	  {
@@ -64,7 +66,8 @@ char * * explode(const char * str, const char * delims, int * arrLen)
   delind = malloc(sizeof(int) * (lenstr + 1));
   while (delind == NULL)
   {
-    delind = malloc(sizeof(char *) * (*n));
+    free(delind);
+	delind = malloc(sizeof(char *) * (*n));
     rpt++;
     if (rpt == 100)
 	{
@@ -92,7 +95,8 @@ char * * explode(const char * str, const char * delims, int * arrLen)
     strArr = malloc(sizeof(char *) * (numarr));
 	while (strArr == NULL)
     {
-      strArr = malloc(sizeof(char *) * (*n));
+      free(strArr);
+	  strArr = malloc(sizeof(char *) * (*n));
 	  rpt++;
 	  if (rpt == 100)
 	  {
@@ -106,14 +110,16 @@ char * * explode(const char * str, const char * delims, int * arrLen)
 	while (lcv1 < numarry)
 	{
       char * str[lcv1] = malloc(sizeof(char * ) * (delind[lcv2 + 1] - delind[lcv2]));
-
 	  lcv1++;
 	  lcv2++;
 	}
+    
   }
   else
   {
-    
+    strArr = malloc(sizeof(char*));
+	char * strArr[0] = malloc(sizeof(char*) * (lenstr + 1));
+	strcpy(strArr[0],str);
   }
   
   
@@ -131,7 +137,7 @@ char * implode(char * * strArr, int len, const char * glue)
   
   
   return "b";// str;
-}
+()}
 //*/
 /*
 void sortStringArray(char * * arrString, int len)
@@ -171,6 +177,7 @@ void destroyStringArray(char * * strArr, int len)
   
   
   //Statements
+
   
   
   return;

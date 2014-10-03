@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main()
+int main(int argc, char * * argv )
 {
   //Initial Declarations
   
-  
+
   //Statements
 
-
+  
 
   return EXIT_SUCCESS;
 }

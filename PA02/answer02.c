@@ -40,12 +40,18 @@ int my_countchar(const char * str, char ch)
 char * my_strchr(const char * str, int ch)
 {
   //Local Declarations
-  
+  int lcv = 0;
+  int len;
+  char * ptr;
   
   //Statements
-  
-  
-  return (EXIT_SUCCESS);
+  len = my_strlen(str);
+  while (str[lcv] != (char)ch && lcv <= len)
+  {
+	lcv++;
+  }
+  ptr = str[lcv];
+  return (ptr);
 }
 
 
@@ -62,7 +68,7 @@ char * my_strrchr(const char * str, int ch)
   return (EXIT_SUCCESS);
 }
 
-
+/*
 char * my_strstr(const char * haystack, const char * needle)
 {
   //Local Declarations
@@ -73,7 +79,7 @@ char * my_strstr(const char * haystack, const char * needle)
   
   return (*r);
 }
-
+*/
 
 char * my_strcat(char * dest, const char * src)
 {
@@ -90,23 +96,32 @@ char * my_strcat(char * dest, const char * src)
 int my_isspace(int ch)
 {
   //Local Declarations
-  int lcv = 0;
-  int len;
   int result = 0;
 
   //Statements
-  len = my_strlen(ch)
-
-  while (lcv <= len)
+  switch (ch)
   {
-    if (ch[lcv] == "\t" || ch[lcv] == "\v" || ch[lcv] == "\f" || ch[lcv] == "\n" || ch[lcv] == "\r" || ch[lcv] == " ")
-	{
-      result = 1;
-	}
+    case '\n':
+	  result = 1;
+	  break;
+	case '\t':
+	  result = 1;
+	  break;
+	case '\r':
+	  result = 1;
+	  break;
+	case '\v':
+	  result = 1;
+	  break;
+	case '\f':
+	  result = 1;
+	  break;
+	case ' ':
+	  result = 1;
+	  break;
   }
 
-
- return (result);
+  return (result);
 }
 
 

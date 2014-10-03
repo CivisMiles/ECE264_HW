@@ -96,3 +96,4 @@ int arrayFindSmallest(int * array, int len)
     return (small);
 }
 // a comment
+// another comment
