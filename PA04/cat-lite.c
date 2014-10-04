@@ -42,7 +42,16 @@ int main(int argc, char * * argv)
 	  else
 	  { 
         file = fopen(argv[ind],"r");
-	    	    fileprint(file);
+	    if (file != NULL)
+		{
+		  fileprint(file);
+		}
+        else
+        {
+          fprintf(stderr ,"Error in fopen:\n\t Failed to open file %s"
+		  "\n\taborting...\n",argv[ind]);
+		  return EXIT_FAILURE;
+        }	
 	  }
     }
   }
@@ -55,21 +64,13 @@ void fileprint(FILE * file)
   int c;
 
   //Statements
-  if (file != NULL)
+  while ((c = getc(file)) != EOF)
   {
-    while ((c = getc(file)) != EOF)
-	{
-	  printf("%c",c);
-	}
-
-	printf("\n");
-
-    fclose (file);
+    printf("%c",c);
   }
-  else
-  {
-    printf("Error in fopen: aborting...\n");
-  }
+  
+  printf("\n");
+  fclose (file);
   
   return;
 }
