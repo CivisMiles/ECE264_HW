@@ -2,41 +2,74 @@
 #include <stdlib.h>
 #include <string.h>
 
+//Function Declaration
+void fileprint(FILE *);
+
 int main(int argc, char * * argv)
 {
   //Initial Declarations
-  int lcv;
-  int run = 0;
-  
+  int ind;
+  FILE * file;
+    
   //Statements
-  for (lcv = 1;lcv < argc;lcv++);
+  if (argc == 1)
   {
-    if (strcmp(argv[lcv],"--help") == 0)
-	{
-	  printf("Usage: cat-lite [--help] [FILE]...\n"
-	         "With no FILE, or when FILE is -, read standard input\n"
-			 "\nExamples:\n"
-			 "\tcat-lite README\tPrint the file README to standard output.\n"
-			 "\tcat-lite f - g\tPrint f's contents,"
-			 " then standard input,\n\t\t\tthen g's contents.\n"
-			 "cat-lite\t\t COpy standard input to standard output.\n"
-			 "\n");
+    file = stdin;
+	fileprint(file);
+  }
+  else
+  {
+    for (ind = 1;ind < argc;ind++)
+    {
+      if (strcmp(argv[ind],"--help") == 0)
+  	  {
+	    printf("\nUsage: cat-lite [--help] [FILE]...\n"
+	           "With no FILE, or when FILE is -, read standard input.\n"
+			   "\nExamples:\n"
+			   "   cat-lite README\tPrint the file README to standard output.\n"
+			   "   cat-lite f - g\tPrint f's contents,"
+			   " then standard input,\n\t\t\tthen g's contents.\n"
+			   "   cat-lite\t\tCopy standard input to standard output.\n"
+			   "\n");
 
-      return EXIT_SUCCESS;
-	}
-	else
+        return EXIT_SUCCESS;
+	  }
+      else if (strcmp(argv[ind],"-") == 0)
+	  {
+        file = stdin;
+		fileprint(file);
+	  }
+	  else
+	  { 
+        file = fopen(argv[ind],"r");
+	    printf("%d",strcmp(argv[ind],"stdin"));
+	    fileprint(file);
+	  }
+    }
+  }
+  return EXIT_SUCCESS;
+}
+
+void fileprint(FILE * file)
+{
+  //Initial Declarations
+  int c;
+
+  //Statements
+  if (file != NULL)
+  {
+    while ((c = getc(file)) != EOF)
 	{
-	  run = 1;
+      printf("%c",c);
 	}
+	printf("\n");
+    fclose (file);
+  }
+  else
+  {
+    printf("Error in fopen: aborting...\n");
   }
   
-  if (run)
-  {
-    
-    
-  }
-
-
-  return EXIT_SUCCESS;
+  return;
 }
 
