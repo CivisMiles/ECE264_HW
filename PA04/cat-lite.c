@@ -42,8 +42,7 @@ int main(int argc, char * * argv)
 	  else
 	  { 
         file = fopen(argv[ind],"r");
-	    printf("%d",strcmp(argv[ind],"stdin"));
-	    fileprint(file);
+	    	    fileprint(file);
 	  }
     }
   }
@@ -60,9 +59,11 @@ void fileprint(FILE * file)
   {
     while ((c = getc(file)) != EOF)
 	{
-      printf("%c",c);
+	  printf("%c",c);
 	}
+
 	printf("\n");
+
     fclose (file);
   }
   else
