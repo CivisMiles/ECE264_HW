@@ -1,3 +1,8 @@
+/***********************************************************
+* Code adapted from Professor Yung-Hsiang Lu               *
+* and taken from "Intermediate C Programming"              *
+***********************************************************/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "answer05.h"
@@ -31,7 +36,7 @@ void partitionIncreasing(int value)
   int * arry = malloc(sizeof(int) * value);
   
   //Statements
-  //partIncreaseHelper(arry, value, 0);
+  partIncreaseHelper(arry, value, 0);
   free(arry);
   
   return;
@@ -44,7 +49,7 @@ void partitionDecreasing(int value)
   int * arry = malloc(sizeof(int) * value);
   
   //Statements
-  //partDecreaseHelper(arry, value, 0);
+  partDecreaseHelper(arry, value, 0);
   free(arry);
   
   return;
@@ -57,7 +62,7 @@ void partitionOdd(int value)
   int * arry = malloc(sizeof(int) * value);
   
   //Statements
-  //partOddHelper(arry, value, 0);
+  partOddHelper(arry, value, 0);
   free(arry);
   
   return;
@@ -70,7 +75,7 @@ void partitionEven(int value)
   int * arry = malloc(sizeof(int) * value);
   
   //Statements
-  //partEvenHelper(arry, value, 0);
+  partEvenHelper(arry, value, 0);
   free(arry);
   
   return;
@@ -83,7 +88,7 @@ void partitionOddAndEven(int value)
   int * arry = malloc(sizeof(int) * value);
   
   //Statements
-  //partOddEvenHelper(arry, value, 0);
+  partOddEvenHelper(arry, value, 0);
   free(arry);
   
   return;
@@ -145,9 +150,10 @@ void partAllHelper(int * arry, int value, int ind)
 
 
 void partIncreaseHelper(int * arry, int value, int ind)
-{/*
+{
   //Initial Declarations
   int val;
+  int min = 1;
 
   //Statements
   //Base Case
@@ -158,20 +164,26 @@ void partIncreaseHelper(int * arry, int value, int ind)
   }
   
   //Recursive
-  for(val = 1 ;val <= value; val++)
+  if (ind != 0)
+  {
+    min = arry[ind - 1] + 1;
+  }
+
+  for(val = min;val <= value; val++)
   {
     arry[ind] = val;
-	partAllHelper(arry, value - val, ind + 1);
+	partIncreaseHelper(arry, value - val, ind + 1);
   }
-  */
+  
   return;
 }
 
 
 void partDecreaseHelper(int * arry, int value, int ind)
-{/*
+{
   //Initial Declarations
   int val;
+  int max = value;
 
   //Statements
   //Base Case
@@ -182,18 +194,23 @@ void partDecreaseHelper(int * arry, int value, int ind)
   }
   
   //Recursive
-  for(val = 1 ;val <= value; val++)
+  if (ind != 0)
+  {
+    max = arry[ind - 1] - 1;
+  }
+
+  for(val = max;val <= value; val--)
   {
     arry[ind] = val;
-	partAllHelper(arry, value - val, ind + 1);
+	partDecreaseHelper(arry, value - val, ind + 1);
   }
-  */
+  
   return;
 }
 
 
 void partOddHelper(int * arry, int value, int ind)
-{/*
+{
   //Initial Declarations
   int val;
 
@@ -206,18 +223,18 @@ void partOddHelper(int * arry, int value, int ind)
   }
   
   //Recursive
-  for(val = 1 ;val <= value; val++)
+  for(val = 1 ;val <= value; val += 2)
   {
     arry[ind] = val;
-	partAllHelper(arry, value - val, ind + 1);
+	partOddHelper(arry, value - val, ind + 1);
   }
-  */
+  
   return;
 }
 
 
 void partEvenHelper(int * arry, int value, int ind)
-{/*
+{
   //Initial Declarations
   int val;
 
@@ -230,21 +247,21 @@ void partEvenHelper(int * arry, int value, int ind)
   }
   
   //Recursive
-  for(val = 1 ;val <= value; val++)
+  for(val = 2 ;val <= value; val += 2)
   {
     arry[ind] = val;
-	partAllHelper(arry, value - val, ind + 1);
+	partEvenHelper(arry, value - val, ind + 1);
   }
-  */
+  
   return;
 }
 
 
 void partOddEvenHelper(int * arry, int value, int ind)
-{/*
+{
   //Initial Declarations
   int val;
-
+  
   //Statements
   //Base Case
   if (value == 0)
@@ -256,10 +273,22 @@ void partOddEvenHelper(int * arry, int value, int ind)
   //Recursive
   for(val = 1 ;val <= value; val++)
   {
-    arry[ind] = val;
-	partAllHelper(arry, value - val, ind + 1);
+    int valid = 0;
+    if (ind == 0)
+	{
+	  valid = 1;
+	}
+	else
+	{
+      valid = (arry[ind - 1] % 2) != (val % 2);
+	}
+    if (valid == 1)
+	{
+	  arry[ind] = val;
+	  partOddEvenHelper(arry, value - val, ind + 1);
+	}
   }
-  */
+  
   return;
 }
 
@@ -268,7 +297,7 @@ void partPrimeHelper(int * arry, int value, int ind)
 {
   //Initial Declarations
   int val;
-  int check = 0;
+  int check;
   int lcv;
 
   //Statements
@@ -282,7 +311,7 @@ void partPrimeHelper(int * arry, int value, int ind)
   //Recursive
   for(val = 2 ;val <= value; val++)
   {
-    for (lcv = 2 ;lcv < val;lcv++)
+	for (lcv = 2 ;lcv * lcv <= val;lcv++)
 	{
       if (val % lcv == 0)
 	  {
@@ -293,10 +322,11 @@ void partPrimeHelper(int * arry, int value, int ind)
 	if (check != 0)
 	{
 	  arry[ind] = val;
-	  partAllHelper(arry, value - val, ind + 1);
+	  partPrimeHelper(arry, value - val, ind + 1);
     }
+    check = 0;
   }
-
+  
   return;
 }
 

@@ -5,12 +5,13 @@
 int main()
 {
   //Initial Declarations
-  int arr[7] = {2,1,7,5,4,8,3};
-  int len = 7;
+  int arr[8] = {5,1,2,7,4,8,3,10};
+  int len = 8;
   int val;
   int lcv;
 
   //Statements
+  /*
   //testing partitionAll
   for (lcv = 0;lcv < len ;lcv++)
   {
@@ -18,6 +19,7 @@ int main()
     printf("\npartitionAll(%d)\n",val);
     partitionAll(val);
   }
+  */
   /*
   //testing partitionIncreasing
   for (lcv = 0;lcv < len ;lcv++)
@@ -26,15 +28,17 @@ int main()
     printf("\npartitionIncreasing(%d)\n",val);
     partitionIncreasing(val);
   }
-
-  //testing partitionDecreasing
+  */
+  
+  ////testing partitionDecreasing
   for (lcv = 0;lcv < len ;lcv++)
   {
     val = arr[lcv];
     printf("\npartitionDecreasing(%d)\n",val);
-    partitionDecreasing(val);
+    //partitionDecreasing(val);
   }
-
+  
+  /*
   //testing partitionOdd
   for (lcv = 0;lcv < len ;lcv++)
   {
@@ -42,7 +46,8 @@ int main()
     printf("\npartitionOdd(%d)\n",val);
     partitionOdd(val);
   }
-
+  */
+  /*
   //testing partitionEven
   for (lcv = 0;lcv < len ;lcv++)
   {
@@ -50,7 +55,8 @@ int main()
     printf("\npartitionEven(%d)\n",val);
     partitionEven(val);
   }
-
+  */
+  /*
   //testing partitionOddAndEven
   for (lcv = 0;lcv < len ;lcv++)
   {
@@ -59,14 +65,16 @@ int main()
     partitionOddAndEven(val);
   }
   */
+  
   //testing partitionPrime
-  //for (lcv = 0;lcv < len ;lcv++)
-  //{
-    //val = arr[lcv];
-    //printf("\npartitionPrime(%d)\n",val);
-    //partitionPrime(val);
-  //}
-
+  for (lcv = 0;lcv < len ;lcv++)
+  {
+    val = arr[lcv];
+    printf("\npartitionPrime(%d)\n",val);
+    partitionPrime(val);
+  }
+  
+  
   return EXIT_SUCCESS;
 }
 
