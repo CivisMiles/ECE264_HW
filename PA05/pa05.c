@@ -35,7 +35,7 @@ int main()
   {
     val = arr[lcv];
     printf("\npartitionDecreasing(%d)\n",val);
-    //partitionDecreasing(val);
+    partitionDecreasing(val);
   }
   
   /*
@@ -65,7 +65,7 @@ int main()
     partitionOddAndEven(val);
   }
   */
-  
+  /*
   //testing partitionPrime
   for (lcv = 0;lcv < len ;lcv++)
   {
@@ -73,7 +73,7 @@ int main()
     printf("\npartitionPrime(%d)\n",val);
     partitionPrime(val);
   }
-  
+  */
   
   return EXIT_SUCCESS;
 }

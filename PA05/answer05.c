@@ -199,7 +199,7 @@ void partDecreaseHelper(int * arry, int value, int ind)
     max = arry[ind - 1] - 1;
   }
 
-  for(val = max;val <= value; val--)
+  for(val = 1;val <= value; val++)
   {
     arry[ind] = val;
 	partDecreaseHelper(arry, value - val, ind + 1);
@@ -311,20 +311,19 @@ void partPrimeHelper(int * arry, int value, int ind)
   //Recursive
   for(val = 2 ;val <= value; val++)
   {
-	for (lcv = 2 ;lcv * lcv <= val;lcv++)
+    check = 0;
+    for (lcv = 2 ;(lcv * lcv) <= val;lcv++)
 	{
       if (val % lcv == 0)
 	  {
 	    check++;
 	  }
 	}
-
-	if (check != 0)
+	if (check == 0)
 	{
 	  arry[ind] = val;
 	  partPrimeHelper(arry, value - val, ind + 1);
     }
-    check = 0;
   }
   
   return;
