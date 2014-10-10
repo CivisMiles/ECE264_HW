@@ -9,7 +9,7 @@
 
 int main(int argc, char * * argv)
 {
-  //Initial Declarations
+  /*//Initial Declarations
   int ind = 1;
   
   //Statements
@@ -64,7 +64,7 @@ int main(int argc, char * * argv)
         return FAIL;
 	  }
     }
-  }
+  }*/
   
 
   return EXIT_SUCCESS;
