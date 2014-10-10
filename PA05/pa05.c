@@ -5,80 +5,68 @@
 int main()
 {
   //Initial Declarations
+  int arr[7] = {2,1,7,5,4,8,3};
+  int len = 7;
   int val;
+  int lcv;
 
   //Statements
   //testing partitionAll
-  val = 7;
-  printf("\npartitionAll(%d)\n",val);
-  partitionAll(val);
-  val = 2;
-  printf("\npartitionAll(%d)\n",val);
-  partitionAll(val);
-  val = 1;
-  printf("\npartitionAll(%d)\n",val);
-  partitionAll(val);
-  val = 5;
-  printf("\npartitionAll(%d)\n",val);
-  partitionAll(val);
-  val = 4;
-  printf("\npartitionAll(%d)\n",val);
-  partitionAll(val);
-  val = 3;
-  printf("\npartitionAll(%d)\n",val);
-  partitionAll(val);
+  for (lcv = 0;lcv < len ;lcv++)
+  {
+    val = arr[lcv];
+    printf("\npartitionAll(%d)\n",val);
+    partitionAll(val);
+  }
   /*
   //testing partitionIncreasing
-  val = 1;
-  printf("\npartitionIncreasing(%d)\n",val);
-  partitionIncreasing(val);
-  
+  for (lcv = 0;lcv < len ;lcv++)
+  {
+    val = arr[lcv];
+    printf("\npartitionIncreasing(%d)\n",val);
+    partitionIncreasing(val);
+  }
+
   //testing partitionDecreasing
-  val = 1;
-  printf("\npartitionDecreasing(%d)\n",val);
-  partitionDecreasing(val);
-  
+  for (lcv = 0;lcv < len ;lcv++)
+  {
+    val = arr[lcv];
+    printf("\npartitionDecreasing(%d)\n",val);
+    partitionDecreasing(val);
+  }
+
   //testing partitionOdd
-  val = 1;
-  printf("\npartitionOdd(%d)\n",val);
-  partitionOdd(val);
-  
+  for (lcv = 0;lcv < len ;lcv++)
+  {
+    val = arr[lcv];
+    printf("\npartitionOdd(%d)\n",val);
+    partitionOdd(val);
+  }
+
   //testing partitionEven
-  val = 1;
-  printf("\npartitionEven(%d)\n",val);
-  partitionEven(val);
-  
+  for (lcv = 0;lcv < len ;lcv++)
+  {
+    val = arr[lcv];
+    printf("\npartitionEven(%d)\n",val);
+    partitionEven(val);
+  }
+
   //testing partitionOddAndEven
-  val = 1;
-  printf("\npartitionOddAndEven(%d)\n",val);
-  partitionOddAndEven(val);
-    */
+  for (lcv = 0;lcv < len ;lcv++)
+  {
+    val = arr[lcv];
+    printf("\npartitionOddAndEven(%d)\n",val);
+    partitionOddAndEven(val);
+  }
+  */
   //testing partitionPrime
-  val = 1;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  val = 17;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  val = 10;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  val = 7;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  val = 2;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  val = 4;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  val = 3;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  val = 5;
-  printf("\npartitionPrime(%d)\n",val);
-  partitionPrime(val);
-  
+  //for (lcv = 0;lcv < len ;lcv++)
+  //{
+    //val = arr[lcv];
+    //printf("\npartitionPrime(%d)\n",val);
+    //partitionPrime(val);
+  //}
+
   return EXIT_SUCCESS;
 }
 
