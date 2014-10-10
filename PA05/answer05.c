@@ -119,3 +119,184 @@ void printarry(int * arry,int len)
   return;
 }
 
+
+void partAllHelper(int * arry, int value, int ind)
+{
+  //Initial Declarations
+  int val;
+
+  //Statements
+  //Base Case
+  if (value = 0)
+  {
+    printarry(arry, ind);
+	return;
+  }
+  
+  //Recursive
+  for(val = 1 ;val <= value; val++)
+  {
+    arry[ind] = val;
+	partAllHelper(arry, value - val, ind + 1);
+  }
+
+  return;
+}
+
+
+void partIncreaseHelper(int * arry, int value, int ind)
+{/*
+  //Initial Declarations
+  int val;
+
+  //Statements
+  //Base Case
+  if (value = 0)
+  {
+    printarry(arry, ind);
+	return;
+  }
+  
+  //Recursive
+  for(val = 1 ;val <= value; val++)
+  {
+    arry[ind] = val;
+	partAllHelper(arry, value - val, ind + 1);
+  }
+  */
+  return;
+}
+
+
+void partDecreaseHelper(int * arry, int value, int ind)
+{/*
+  //Initial Declarations
+  int val;
+
+  //Statements
+  //Base Case
+  if (value = 0)
+  {
+    printarry(arry, ind);
+	return;
+  }
+  
+  //Recursive
+  for(val = 1 ;val <= value; val++)
+  {
+    arry[ind] = val;
+	partAllHelper(arry, value - val, ind + 1);
+  }
+  */
+  return;
+}
+
+
+void partOddHelper(int * arry, int value, int ind)
+{/*
+  //Initial Declarations
+  int val;
+
+  //Statements
+  //Base Case
+  if (value = 0)
+  {
+    printarry(arry, ind);
+	return;
+  }
+  
+  //Recursive
+  for(val = 1 ;val <= value; val++)
+  {
+    arry[ind] = val;
+	partAllHelper(arry, value - val, ind + 1);
+  }
+  */
+  return;
+}
+
+
+void partEvenHelper(int * arry, int value, int ind)
+{/*
+  //Initial Declarations
+  int val;
+
+  //Statements
+  //Base Case
+  if (value = 0)
+  {
+    printarry(arry, ind);
+	return;
+  }
+  
+  //Recursive
+  for(val = 1 ;val <= value; val++)
+  {
+    arry[ind] = val;
+	partAllHelper(arry, value - val, ind + 1);
+  }
+  */
+  return;
+}
+
+
+void partOddEvenHelper(int * arry, int value, int ind)
+{/*
+  //Initial Declarations
+  int val;
+
+  //Statements
+  //Base Case
+  if (value = 0)
+  {
+    printarry(arry, ind);
+	return;
+  }
+  
+  //Recursive
+  for(val = 1 ;val <= value; val++)
+  {
+    arry[ind] = val;
+	partAllHelper(arry, value - val, ind + 1);
+  }
+  */
+  return;
+}
+
+
+void partPrimeHelper(int * arry, int value, int ind)
+{
+  //Initial Declarations
+  int val;
+  int check = 0;
+  int lcv;
+
+  //Statements
+  //Base Case
+  if (value = 0)
+  {
+    printarry(arry, ind);
+	return;
+  }
+  
+  //Recursive
+  for(val = 2 ;val <= value; val++)
+  {
+    for (lcv = 2 ;lcv < val;lcv++)
+	{
+      if (val % lcv = 0)
+	  {
+	    chec++;
+	  }
+	}
+
+	if (check != 0)
+	{
+	  arry[ind] = val;
+	  partAllHelper(arry, value - val, ind + 1);
+    }
+  }
+
+  return;
+}
+
