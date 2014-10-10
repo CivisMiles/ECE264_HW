@@ -197,14 +197,25 @@ void partDecreaseHelper(int * arry, int value, int ind)
   if (ind != 0)
   {
     max = arry[ind - 1] - 1;
+    for (val = 1;val <= value; val++)
+    {
+      arry[ind] = val;
+      if (arry[ind - 1] <= arry[ind])
+	  {
+        return;
+	  }
+      partDecreaseHelper(arry, value - val, ind + 1);
+    }
+  }
+  else
+  {
+    for (val = 1;val <= value; val++)
+    {
+      arry[ind] = val;
+	  partDecreaseHelper(arry, value - val, ind + 1);
+    }
   }
 
-  for(val = 1;val <= value; val++)
-  {
-    arry[ind] = val;
-	partDecreaseHelper(arry, value - val, ind + 1);
-  }
-  
   return;
 }
 
