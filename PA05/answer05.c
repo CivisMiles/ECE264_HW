@@ -4,11 +4,11 @@
 
 //function declarations
 void printarry(int *, int);
-void partAllhelper(int *, int, int);
+void partAllHelper(int *, int, int);
 void partIncreaseHelper(int *, int, int);
 void partDecreaseHelper(int *, int, int);
-void partOdd(int *, int, int);
-void partEven(int *, int, int);
+void partOddHelper(int *, int, int);
+void partEvenHelper(int *, int, int);
 void partOddEvenHelper(int *, int, int);
 void partPrimeHelper(int *, int, int);
 
@@ -108,7 +108,7 @@ void printarry(int * arry,int len)
   //Initial Declaratrions
   int ind;
   
-  //Statments
+  //Statements
   printf("= ");
   for (ind = 0;ind < len - 1;ind++)
   {
@@ -127,7 +127,7 @@ void partAllHelper(int * arry, int value, int ind)
 
   //Statements
   //Base Case
-  if (value = 0)
+  if (value == 0)
   {
     printarry(arry, ind);
 	return;
@@ -151,7 +151,7 @@ void partIncreaseHelper(int * arry, int value, int ind)
 
   //Statements
   //Base Case
-  if (value = 0)
+  if (value == 0)
   {
     printarry(arry, ind);
 	return;
@@ -175,7 +175,7 @@ void partDecreaseHelper(int * arry, int value, int ind)
 
   //Statements
   //Base Case
-  if (value = 0)
+  if (value == 0)
   {
     printarry(arry, ind);
 	return;
@@ -199,7 +199,7 @@ void partOddHelper(int * arry, int value, int ind)
 
   //Statements
   //Base Case
-  if (value = 0)
+  if (value == 0)
   {
     printarry(arry, ind);
 	return;
@@ -223,7 +223,7 @@ void partEvenHelper(int * arry, int value, int ind)
 
   //Statements
   //Base Case
-  if (value = 0)
+  if (value == 0)
   {
     printarry(arry, ind);
 	return;
@@ -247,7 +247,7 @@ void partOddEvenHelper(int * arry, int value, int ind)
 
   //Statements
   //Base Case
-  if (value = 0)
+  if (value == 0)
   {
     printarry(arry, ind);
 	return;
@@ -273,7 +273,7 @@ void partPrimeHelper(int * arry, int value, int ind)
 
   //Statements
   //Base Case
-  if (value = 0)
+  if (value == 0)
   {
     printarry(arry, ind);
 	return;
@@ -284,9 +284,9 @@ void partPrimeHelper(int * arry, int value, int ind)
   {
     for (lcv = 2 ;lcv < val;lcv++)
 	{
-      if (val % lcv = 0)
+      if (val % lcv == 0)
 	  {
-	    chec++;
+	    check++;
 	  }
 	}
 
