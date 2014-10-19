@@ -14,17 +14,18 @@
 #define CANMOVE 1
 #define NOMOVE 0
 
-int findstart(char**, int);
-int can_move(char**, int, int, int, int);
+int findstart(char, int);
+int can_move(char, int, int, int, int, int);
 void move(int, int, int, int*, int*);
 void printdirections(int, int);
-void directions(char**, int, int, int, int, int, int)
+void directions(char, int, int, int, int, int, int);
 
 void print_directions(char** maze, int w, int h)
 {
   //Initial Declarations
   int mazestart;
-    
+  int dir = 2;
+
   //Statements
   mazestart = findstart(**maze, w);
   directions(**maze, h, w, 0, mazestart, dir, 0);
@@ -33,7 +34,7 @@ void print_directions(char** maze, int w, int h)
 }
 
 
-int findstart(char** maze, int w)
+int findstart(char maze, int w)
 {
   //Initial Declarations
   int lcv = 1;
@@ -41,14 +42,14 @@ int findstart(char** maze, int w)
   //Statements
   while (maze[0][lcv] = "X" && lcv < w)
   {
-    lcv++
+    lcv++;
   }
 
   return (lcv);
 }
 
 
-void directions(char**maze,int h,int w,int row,int col,int dir,int moves)
+void directions(char maze,int h,int w,int row,int col,int dir,int moves)
 {
   //Initial Declaratrions
   int lcv;
@@ -68,55 +69,62 @@ void directions(char**maze,int h,int w,int row,int col,int dir,int moves)
         move(dir + lcv - 3,row,col,&row2,&col2);
 		if (dir + lcv == dir)
 		{
-		  directions();
+		  directions(**maze,h,w,row2,col2,dir + lcv - 3,moves + 1);
 		}
 		else
 		{
           printdirections(dir + lcv - 3, moves);
-		  directions();
+		  directions(**maze,h,w,row2,col2,dir + lcv - 3,0);
 		}
 	  }
     }
 	else
 	{
-      
+	  canmove = can_move(**maze,h,w,row,col,dir + lcv);
+	  if (canmove)
+      {
+        move(dir + lcv,row,col,&row2,&col2);
+		if (dir + lcv == dir)
+		{
+		  directions(**maze,h,w,row2,col2,dir + lcv,moves + 1);
+		}
+		else
+		{
+          printdirections(dir + lcv, moves);
+		  directions(**maze,h,w,row2,col2,dir + lcv,0);
+		}
+	  } 
 	}
-	/*
-	else
-	{
-	  printdirections(dir,moves);
-    }
-	*/
   }
 
   return;
 }  
 
 
-int can_move(char** maze, int h, int w, int row, int col, int dir)
+int can_move(char maze, int h, int w, int row, int col, int dir)
 {
   //Initial Declaratrions
-  int move;
+  int poss;
   
   //Statements
   if (dir == NORTH && col + MOVENORTH > 0 && maze[row][col + MOVENORTH] != "X")
   {
-    move = 1;
+    poss = 1;
   }
   else if (dir == EAST && row + MOVEEAST < w && maze[row + MOVEEAST][col] != "X")
   {
-    move = 1;
+    poss = 1;
   }
   else if (dir == SOUTH && col + MOVESOUTH < h && maze[row][col + MOVESOUTH] != "X")
   {
-    move = 1;
+    poss = 1;
   }
   else if (dir == WEST && row + MOVEWEST > 0 && maze[row + MOVEEAST][col] != "X")
   {
-    move = 1;
+    poss = 1;
   }
 
-  if (move)
+  if (poss)
   {
     return(CANMOVE);
   }
@@ -134,19 +142,19 @@ void move(int dir, int currow, int curcol,int* row,int* col)
   //Statements
   if (dir == NORTH)
   {
-    row = currow + MOVENORTH;
+    *row = currow + MOVENORTH;
   }
   else if (dir == EAST)
   {
-    col = curcol + MOVEEAST;
+    *col = curcol + MOVEEAST;
   }
   else if (dir == SOUTH)
   {
-    row = currow + MOVESOUTH;
+    *row = currow + MOVESOUTH;
   }
   else
   {
-    col = curcol + MOVEWEST;
+    *col = curcol + MOVEWEST;
   }
   
   return;
