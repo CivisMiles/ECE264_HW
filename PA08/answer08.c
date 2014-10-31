@@ -1,26 +1,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <>
 #include "answer08.h"
-
-void listprint(List *);
-
-void listprint(List * list)
-{
-  while (list != NULL){
-    printf("\t%p ['%s' %p]\n",list,list->str,list->next);
-    list = list->next;}
-  return;
-}
 
 List * List_createNode(const char * str)
 {
   //Initial Declarations
-  
+  //printf("List_createNode\n");
   //Statements
   List * list = malloc(sizeof(List));
-  list->str = s;
+  list->str = strdup(str);
   list->next = NULL;
 
   return list;
@@ -29,9 +18,15 @@ List * List_createNode(const char * str)
 void List_destroy(List * list)
 {
   //Initial Declarations
-  
+  //printf("List_destroy\n");
   //Statements
-
+  if (list != NULL)
+  {
+    List_destroy(list->next);
+    free(list->str);
+    free(list);
+  }
+  
   return;
 }
 
@@ -39,7 +34,7 @@ int List_length(List * list)
 {
   //Initial Declarations
   int len = 0;
-  
+  //printf("List_length\n");
   //Statements
   while (list != NULL)
   {
@@ -49,3 +44,24 @@ int List_length(List * list)
 
   return (len);
 }
+
+List * List_merge(List * lhs, List * rhs, int (*compar)(const char *, const char *))
+{
+  //Initial Declarations
+  
+  //Statements
+  
+  
+  return (lhs);
+}
+
+List * List_sort(List * list, int (*compar)(const char *, const char *))
+{
+  //Initial Declarations
+  
+  //Statements
+  
+  
+  return (list);
+}
+
