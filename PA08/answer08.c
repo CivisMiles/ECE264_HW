@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "answer08.h"
 
-List * Merge(List *, List *, int (*compar)(const char *, const char *));
+//List * Merge(List *, List *, List *, int (*compar)(const char *, const char *));
 
 List * List_createNode(const char * str)
 {
@@ -60,52 +60,45 @@ List * List_merge(List * lhs, List * rhs, int (*compar)(const char *, const char
   }
    
   //Initial Declarations
-
+  List * list;
+  
   //Statements
   if (compar(lhs->str,rhs->str) > 0)
   {
-    Merge(rhs, lhs, compar);
-    return (rhs);
+    list = rhs;
+  	list->next = List_merge(lhs, rhs->next, compar);
   }
   else
   {
-    Merge(lhs, rhs, compar);
-    return (lhs);
+    list = lhs;
+    list->next = List_merge(lhs->next, rhs, compar);
   }
-}
-
-void Merge(List * lhs, List * rhs, int (*compar)(const char *, const char *))
-{
-  if (lhs == NULL && rhs != NULL)
-  {
-    return (rhs);
-  }
-  else if (rhs == NULL && lhs != NULL)
-  {
-    return (lhs);
-  }
-
-  //Initial Declarations
-  List * new = lhs->next;
-  
-  //Statements
-  if (compar(new->str,rhs->str) > 0)
-    lhs->next = rhs;
-    Merge(rhs, new, compar);
-    return;
-  }
-  else
-  {
-    Merge(new, rhs, compar);
-    return;
-  }
+  return (list);
 }
 
 List * List_sort(List * list, int (*compar)(const char *, const char *))
 {
   //Initial Declarations
+  List * list1 = list;
+  List * list2;
+  int len = List_length(list);
   
   //Statements
+  if (len > 1)
+  {
+    for (lcv = 0;lcv <= len/2;lcv++)
+	{
+	  list = list.next;
+	}
+    list2 = list.next;
+    list.next = NULL;
+	List_Sort(list1, compar);
+	List_Sort(list2, compar);
+  }
+  else
+  {
+    
+  }
   
   
   return (list);
