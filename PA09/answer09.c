@@ -1,0 +1,190 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "answer09.h"
+
+void arryreset(char *, int);
+
+BusinessNode * create_node(char * stars, char * name, char * address)
+{
+  //Local Declarations
+  BusinessNode * node = malloc(sizeof(BusinessNode)); 
+
+  //Statements
+  node->stars = strdup(stars);
+  node->name = strdup(name);
+  node->address = strdup(address);
+  node->left = NULL;
+  node->right = NULL;
+  return (node);
+}
+
+BusinessNode * tree_insert(BusinessNode * node, BusinessNode * root)
+{
+  //Local Declarations 
+  char * star="s"; char * name="b"; char * address="g";
+  BusinessNode * node1 = create_node(star, name, address);
+
+  //Statements
+  
+  
+  return (node1);
+}
+
+BusinessNode * load_tree_from_file(char * filename)
+{
+  BusinessNode * root = NULL;
+  if (filename == NULL)
+  {
+    return (root);
+  }
+  //Local Declarations
+  FILE * input = fopen(filename, "r");
+  while (input == NULL && lcv < 4)
+  {
+    fclose(input);
+    input = fopen(filename, "r");
+    lcv++;
+  }
+  if (input == NULL)
+  {
+    return(root);
+  }
+  int first = 0;
+  ssize_t starlen;
+  ssize_t namelen;
+  ssize_t addlen;
+  char star[5];
+  char name[50];
+  char address[200];
+  BusinessNode * root1;
+  
+  //Statements
+  while (addlen != -1 || addlen != NULL)
+  {
+	starlen = getdelim(star,5,'\t',input);
+	namelen = getdelim(name,50,'\t',input);
+	addlen = getdelim(address,200,'\t',input);;
+	if (first == 0)
+    {
+	  root = create_node(star, name, address);
+	  first++;
+    }
+    else
+    {
+      BusinessNode * node = create_node(star, name, address);
+      root1 = tree_insert(node, root);
+	  if (root1 != root)
+	  {
+        printf("Error:'tree_insert' returned false value of root");
+		return (NULL);
+	  }
+    }
+	arryreset(star, starlen);
+	arryreset(name, namelen);
+	arryreset(address, addlen);
+  }
+  return (root);
+}
+
+BusinessNode * tree_search_name(char * name, BusinessNode * root)
+{
+  if (root != NULL)
+  {
+    //Local Declarations 
+    int greater = strcmp(name, root->name);
+    
+    //Statements
+    if (greater > 0)
+    {
+      root = tree_search_name(name, root->left);
+    }
+    else if (greater < 0)
+    {
+      root = tree_search_name(name, root->right);
+    }
+  }
+  return (root);
+}
+
+void printnode(BusinessNode * node)
+{
+  //Local Declarations
+  
+  //Statements
+  if (node != NULL)
+  {
+    printf("%s\n"
+	  "============\n"
+	  "Stars:\n\t%s\n"
+	  "Address:\n\t%s\n",node->name,node->stars,node->address);
+  }
+  else
+  {
+    printf("\nThe node is empty (NULL)\n");
+  }
+  return;
+}
+
+void print_tree(BusinessNode * tree)
+{
+  //Local Declarations 
+
+  //Statements
+  if (tree != NULL)
+  {
+    printnode(tree);
+	printf("Printing Right\n");
+    print_tree(tree->right);
+	printf("Printing Left\n");
+    print_tree(tree->left);
+  }
+  return;
+}
+
+void destroy_tree(BusinessNode * root)
+{
+  //Local Declarations
+  
+  //Statements
+  if (root != NULL)
+  {
+    free(root->address);
+    free(root->stars);
+	free(root->name);
+    destroy_tree(root->left);
+    destroy_tree(root->right);
+	free(root);
+  }
+  return;
+}
+
+void arryreset(char * array, int len)
+{
+  //Initial Declarations
+  int lcv;
+  
+  //Statements
+  for (lcv = 0;lcv < len;lcv++)
+  {
+    array[lcv] = 0;
+  }
+  return;
+}
+
+/*????????????????
+int linecount(FILE * input)
+{ 
+  //Local Declarations
+  int len = 0;
+  int c = fgetc(input);
+
+  //Statements
+  while (c != EOF || c != '\n')
+  {
+    len++;
+	c = fgetc(input);
+  }
+  return (len);
+}
+*/
