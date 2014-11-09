@@ -21,14 +21,38 @@ BusinessNode * create_node(char * stars, char * name, char * address)
 
 BusinessNode * tree_insert(BusinessNode * node, BusinessNode * root)
 {
+  if (node == NULL)
+  {
+    printf("\nError: node given is null\n");
+    return (root);
+  }
   //Local Declarations 
-  char * star="s"; char * name="b"; char * address="g";
-  BusinessNode * node1 = create_node(star, name, address);
-
+  BusinessNode * root1 = root;
+  
   //Statements
-  
-  
-  return (node1);
+  if (root == NULL)
+  {
+    
+  }
+  else
+  {
+    int dir = strcmp(root->stars,node->stars);
+    if (dir > 0)
+    {
+      root = tree_insert(node, root->right);
+    }
+    else if (dir < 0)
+    {
+      root = tree_insert(node, root->left);
+    }
+	if (root1 != root)
+	{
+      printf("\nError: 'tree_insert' returned flase value of root\n");
+	  return (root);
+	}
+  }
+      
+  return (root);
 }
 
 BusinessNode * load_tree_from_file(char * filename)
@@ -52,15 +76,15 @@ BusinessNode * load_tree_from_file(char * filename)
     return(root);
   }
   int first = 0;
+  size_t stlen;
+  size_t nalen;
+  size_t adlen;
   ssize_t starlen;
   ssize_t namelen;
   ssize_t addlen = 0;
   char star[5];
   char name[75];
   char address[200];
-  size_t stlen;
-  size_t nalen;
-  size_t adlen;
   BusinessNode * root1;
   
   //Statements
@@ -69,9 +93,9 @@ BusinessNode * load_tree_from_file(char * filename)
     stlen = 5;
 	nalen = 75;
 	adlen = 200;
-	starlen = getdelim(star,&stlen,'\t',input);
-	namelen = getdelim(name,&nalen,'\t',input);
-	addlen = getdelim(address,&adlen,'\t',input);;
+	starlen = getdelim(star, &stlen, '\t', input);
+	namelen = getdelim(name, &nalen, '\t', input);
+	addlen = getdelim(address, &adlen, '\n', input);;
 	if (first == 0)
     {
 	  root = create_node(star, name, address);
