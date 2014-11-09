@@ -33,6 +33,7 @@ BusinessNode * tree_insert(BusinessNode * node, BusinessNode * root)
 
 BusinessNode * load_tree_from_file(char * filename)
 {
+  int lcv = 0;
   BusinessNode * root = NULL;
   if (filename == NULL)
   {
@@ -53,18 +54,24 @@ BusinessNode * load_tree_from_file(char * filename)
   int first = 0;
   ssize_t starlen;
   ssize_t namelen;
-  ssize_t addlen;
+  ssize_t addlen = 0;
   char star[5];
-  char name[50];
+  char name[75];
   char address[200];
+  size_t stlen;
+  size_t nalen;
+  size_t adlen;
   BusinessNode * root1;
   
   //Statements
-  while (addlen != -1 || addlen != NULL)
+  while (addlen != -1)
   {
-	starlen = getdelim(star,5,'\t',input);
-	namelen = getdelim(name,50,'\t',input);
-	addlen = getdelim(address,200,'\t',input);;
+    stlen = 5;
+	nalen = 75;
+	adlen = 200;
+	starlen = getdelim(star,&stlen,'\t',input);
+	namelen = getdelim(name,&nalen,'\t',input);
+	addlen = getdelim(address,&adlen,'\t',input);;
 	if (first == 0)
     {
 	  root = create_node(star, name, address);

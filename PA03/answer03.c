@@ -48,7 +48,7 @@ char * strcat_ex(char * * dest, int * n, const char * src)
   return EXIT_SUCCESS;
 }
 
-///*
+
 char * * explode(const char * str, const char * delims, int * arrLen)
 {
   //Local Declarations
@@ -126,7 +126,7 @@ char * * explode(const char * str, const char * delims, int * arrLen)
   return * strArr;
 }
 
-
+/*
 char * implode(char * * strArr, int len, const char * glue)
 {
   //Local Declarations
@@ -137,8 +137,8 @@ char * implode(char * * strArr, int len, const char * glue)
   
   
   return "b";// str;
-()}
-//*/
+}
+*/
 /*
 void sortStringArray(char * * arrString, int len)
 {

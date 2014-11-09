@@ -27,6 +27,9 @@ int main(int argc, char * * argv)
   EditNode(list_3,"2");
   EditNode(list_4,"4");
   
+  List_sort(list_1, strcmp);
+  
+  
   
   List_destroy(list_1);
   

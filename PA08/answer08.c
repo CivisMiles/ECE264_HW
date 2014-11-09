@@ -51,7 +51,7 @@ List * List_merge(List * lhs, List * rhs, int (*compar)(const char *, const char
     return (rhs);
   }
   else if (rhs == NULL && lhs != NULL)
-  {
+  { 
     return (lhs);
   }
   else if (lhs == NULL && rhs == NULL)
@@ -78,28 +78,34 @@ List * List_merge(List * lhs, List * rhs, int (*compar)(const char *, const char
 
 List * List_sort(List * list, int (*compar)(const char *, const char *))
 {
+  if (list == NULL)
+  {
+    return (NULL);
+  }
+  
   //Initial Declarations
   List * list1 = list;
   List * list2;
   int len = List_length(list);
-  
+  int lcv;
+
   //Statements
-  if (len > 1)
+  //base case
+  if (len < 2)
   {
-    for (lcv = 0;lcv <= len/2;lcv++)
-	{
-	  list = list.next;
-	}
-    list2 = list.next;
-    list.next = NULL;
-	List_Sort(list1, compar);
-	List_Sort(list2, compar);
-  }
-  else
-  {
-    
+    return (list);
   }
   
+  //Recursive
+  for (lcv = 0;lcv <= len/2;lcv++)
+  {
+	list = list->next;
+  }
+  list2 = list->next;
+  list->next = NULL;
+  List_sort(list1, compar);
+  List_sort(list2, compar);
+  List_merge(list1, list2, compar);
   
   return (list);
 }
