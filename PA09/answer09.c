@@ -109,7 +109,7 @@ BusinessNode * tree_insert(BusinessNode * node, BusinessNode * root)
       }
       else if (dir == 0)
 	  {   
-	    printf("Error: the current line is duplicated");
+	    printf("Error: the current line is already exists");
 		return (root);
 	  }
 	}
@@ -117,7 +117,6 @@ BusinessNode * tree_insert(BusinessNode * node, BusinessNode * root)
   if (root1 != root)
   {
     printf("\nError: 'tree_insert' returned flase value of root\n");
-    return (root);
   }  
   return (root);
 }
@@ -149,33 +148,26 @@ BusinessNode * load_tree_from_file(char * filename)
   ssize_t starlen;
   ssize_t namelen;
   ssize_t addlen = 0;
-  char star[5];
-  char name[75];
-  char address[200];
   char ** arr[3];
   BusinessNode * root1;
   
   //Statements
   while (addlen != -1)
   {
-    stlen = 5;
-	nalen = 75;
-	adlen = 200;
+    stlen = 1;
+	nalen = 1;
+	adlen = 1;
 	starlen = getdelim(arr[0], &stlen, '\t', input);
 	namelen = getdelim(arr[1], &nalen, '\t', input);
 	addlen = getdelim(arr[2], &adlen, '\n', input);
-	/*starlen = getdelim(star, &stlen, '\t', input);
-	namelen = getdelim(name, &nalen, '\t', input);
-	addlen = getdelim(address, &adlen, '\n', input);*/
 	if (first == 0)
     {
-	  root = create_node(*arr[0], *arr[1], *arr[2]);
-	  //root = create_node(star, name, address);
+	  root = create_node(strdup(*arr[0]), strdup(*arr[1]), strdup(*arr[2]));
 	  first++;
     }
     else
     {
-      BusinessNode * node = create_node(*arr[0], *arr[1], *arr[2]); 
+      BusinessNode * node = create_node(strdup(*arr[0]), strdup(*arr[1]), strdup(*arr[2]));
       root1 = tree_insert(node, root);
 	  if (root1 != root)
 	  {
@@ -183,9 +175,9 @@ BusinessNode * load_tree_from_file(char * filename)
 		return (NULL);
 	  }
     }
-	arryreset(star, starlen);
-	arryreset(name, namelen);
-	arryreset(address, addlen);
+	free(arr[0]);
+	free(arr[1]);
+	free(arr[2]);
   }
   return (root);
 }
