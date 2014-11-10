@@ -11,9 +11,9 @@ BusinessNode * create_node(char * stars, char * name, char * address)
   BusinessNode * node = malloc(sizeof(BusinessNode)); 
 
   //Statements
-  node->stars = strdup(stars);
-  node->name = strdup(name);
-  node->address = strdup(address);
+  node->stars = stars;
+  node->name = name;
+  node->address = address;
   node->left = NULL;
   node->right = NULL;
   return (node);
@@ -25,6 +25,10 @@ BusinessNode * tree_insert(BusinessNode * node, BusinessNode * root)
   {
     printf("\nError: node given is null\n");
     return (root);
+  }
+  if (root == NULL)
+  {
+    return(node);
   }
   //Local Declarations 
   int dir = strcmp(root->stars,node->stars);
@@ -194,11 +198,11 @@ BusinessNode * tree_search_name(char * name, BusinessNode * root)
     int greater = strcmp(name, root->name);
     
     //Statements
-    if (greater > 0)
+    if (greater < 0)
     {
       root = tree_search_name(name, root->left);
     }
-    else if (greater < 0)
+    else if (greater > 0)
     {
       root = tree_search_name(name, root->right);
     }
