@@ -27,31 +27,94 @@ BusinessNode * tree_insert(BusinessNode * node, BusinessNode * root)
     return (root);
   }
   //Local Declarations 
+  int dir = strcmp(root->stars,node->stars);
   BusinessNode * root1 = root;
   
   //Statements
-  if (root == NULL)
+  if (dir > 0)
   {
-    
+    if (root->right != NULL)
+	{
+	  root = tree_insert(node, root->right);
+	}
+	else
+	{
+      root->right = node;
+	}
   }
-  else
+  else if (dir < 0)
   {
-    int dir = strcmp(root->stars,node->stars);
+    if (root->left != NULL)
+	{ 
+	  root = tree_insert(node, root->left);
+	}
+	else
+	{
+      root->left = node;
+	}
+  }
+  else if (dir == 0)
+  {
+    dir = strcmp(root->name,node->name);
     if (dir > 0)
     {
-      root = tree_insert(node, root->right);
+      if (root->right != NULL)
+	  {
+	    root = tree_insert(node, root->right);
+	  }
+	  else
+	  {
+        root->right = node;
+	  }
     }
     else if (dir < 0)
     {
-      root = tree_insert(node, root->left);
+      if (root->left != NULL)
+	  { 
+	    root = tree_insert(node, root->left);
+	  }
+	  else
+	  {
+        root->left = node;
+	  }
     }
-	if (root1 != root)
+	else if (dir == 0)
 	{
-      printf("\nError: 'tree_insert' returned flase value of root\n");
-	  return (root);
+      dir = strcmp(root->address,node->address);
+      if (dir > 0)
+      {
+        if (root->right != NULL)
+	    {
+	      root = tree_insert(node, root->right);
+	    }
+	    else
+	    {
+          root->right = node;
+	    }
+      }
+      else if (dir < 0)
+      {
+        if (root->left != NULL)
+	    { 
+	      root = tree_insert(node, root->left);
+	    }
+	    else
+	    {
+          root->left = node;
+	    }
+      }
+      else if (dir == 0)
+	  {   
+	    printf("Error: the current line is duplicated");
+		return (root);
+	  }
 	}
   }
-      
+  if (root1 != root)
+  {
+    printf("\nError: 'tree_insert' returned flase value of root\n");
+    return (root);
+  }  
   return (root);
 }
 
@@ -85,6 +148,7 @@ BusinessNode * load_tree_from_file(char * filename)
   char star[5];
   char name[75];
   char address[200];
+  char ** arr[3];
   BusinessNode * root1;
   
   //Statements
@@ -93,17 +157,21 @@ BusinessNode * load_tree_from_file(char * filename)
     stlen = 5;
 	nalen = 75;
 	adlen = 200;
-	starlen = getdelim(star, &stlen, '\t', input);
+	starlen = getdelim(arr[0], &stlen, '\t', input);
+	namelen = getdelim(arr[1], &nalen, '\t', input);
+	addlen = getdelim(arr[2], &adlen, '\n', input);
+	/*starlen = getdelim(star, &stlen, '\t', input);
 	namelen = getdelim(name, &nalen, '\t', input);
-	addlen = getdelim(address, &adlen, '\n', input);;
+	addlen = getdelim(address, &adlen, '\n', input);*/
 	if (first == 0)
     {
-	  root = create_node(star, name, address);
+	  root = create_node(*arr[0], *arr[1], *arr[2]);
+	  //root = create_node(star, name, address);
 	  first++;
     }
     else
     {
-      BusinessNode * node = create_node(star, name, address);
+      BusinessNode * node = create_node(*arr[0], *arr[1], *arr[2]); 
       root1 = tree_insert(node, root);
 	  if (root1 != root)
 	  {
@@ -203,19 +271,3 @@ void arryreset(char * array, int len)
   return;
 }
 
-/*????????????????
-int linecount(FILE * input)
-{ 
-  //Local Declarations
-  int len = 0;
-  int c = fgetc(input);
-
-  //Statements
-  while (c != EOF || c != '\n')
-  {
-    len++;
-	c = fgetc(input);
-  }
-  return (len);
-}
-*/
